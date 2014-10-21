@@ -1,0 +1,19 @@
+<div class="project-details">
+  
+  <a href="#/projects">Back</a>
+
+  <h2>{{project.name}}</h2>
+  <p>{{project.date}}</p>
+
+  <hr>
+  
+  <p ng-bind-html="descHTML"></p>
+  
+  <ul>
+    <li ng-repeat="photo in project.photos | filter:query | orderBy:date" class="photos">
+      <img ng-src="{{imagePath}}{{photo.url}}">
+    </li>
+  </ul>
+
+</div>
+

@@ -1,0 +1,7 @@
+<h2>Projects</h2>
+<ul class="projects">
+  <li ng-repeat="project in projects | filter:query | orderBy:date" class="thumbnail">
+    <a href="#/projects/{{project.name_url}}" class="thumb"><img ng-src="{{imagePath}}{{project.thumb}}"></a>
+    <a href="#/projects/{{project.name_url}}" class="title">{{project.name}}</a>
+  </li>
+<ul>
