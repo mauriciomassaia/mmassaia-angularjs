@@ -9,12 +9,7 @@
  */
 angular.module('mmassaiaAngularJsApp')
   .controller('ProjectCtrl', function ($scope, $routeParams, projectService) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
+    
     var projectId = $routeParams.projectId;
 
     projectService.success(function (data, status, headers, config) {
