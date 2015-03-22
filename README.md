@@ -2,4 +2,4 @@
 
 Using mmassaia.com data.
 
-build using [Yeoman](http://yeoman.io) and [AngularJS](http://angularjs.org).
+build using [Yeoman](http://yeoman.io), [AngularJS](http://angularjs.org) and [Angular Material](https://material.angularjs.org/).
