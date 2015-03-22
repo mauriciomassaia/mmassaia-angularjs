@@ -1,19 +1,47 @@
-<div class="project-details">
-  
-  <a href="#/projects">Back</a>
+<md-toolbar class="md-accent md-tall md-hue-3">
+  <span flex></span>
+  <h1 class="md-toolbar-tools md-toolbar-tools-bottom">
+    <span  class="md-flex">{{project.name}}</span>
+  </h1>
+</md-toolbar>
+<md-content>
 
-  <h2>{{project.name}}</h2>
-  <p>{{project.date}}</p>
+  <md-list>
+    <md-item ng-repeat="photo in project.photos">
+      <md-item-content>
+            <img ng-src="{{imagePath}}{{photo.url}}" class="project-image">
+      </md-item-content>
+    </md-item>
+  </md-list>
+  <p>
+  Date: <small>{{project.date}}</small>
 
-  <hr>
-  
+  </p>
+  <!-- <h2>{{project.name}}</h2> -->
+  <p></p>
+  <p>
+    <span ng-repeat="tag in project.tags">
+      {{tag.full_name}}
+    </span>
+  </p>
   <p ng-bind-html="descHTML"></p>
-  
-  <ul>
-    <li ng-repeat="photo in project.photos | filter:query | orderBy:date" class="photos">
-      <img ng-src="{{imagePath}}{{photo.url}}">
-    </li>
-  </ul>
 
-</div>
 
+  <p>
+    <md-divider></md-divider>
+  </p>
+
+  <div layout="row" layout-align="space-between center" layout-padding layout-margin>
+    <div>
+      <md-button ng-href="#/projects/{{previousProject.name_url}}" ng-if="previousProject != ''" class="md-primary md-hue-1">
+        &lt; {{previousProject.name}}
+      </md-button>
+    </div>
+    <div>
+      <md-button ng-href="#/projects/{{nextProject.name_url}}" ng-if="nextProject != ''" class="md-primary md-hue-1">
+        {{nextProject.name}} &gt;
+      </md-button>
+    </div>
+  </div>
+
+</md-content>

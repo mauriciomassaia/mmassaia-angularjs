@@ -8,18 +8,25 @@
  * Controller of the mmassaiaAngularJsApp
  */
 angular.module('mmassaiaAngularJsApp')
-  .controller('ProjectsListCtrl', function ($scope, projectService) {
-    
+  .controller('ProjectsListCtrl', ['$scope', 'projectService', '$location', function ($scope, projectService, $location) {
+
     $scope.projects = [];
     $scope.imagePath = '';
+    $scope.$parent.pageTitle = 'Projects';
 
     projectService.success(function (data, status, headers, config) {
-        console.log(data);
-        $scope.imagePath = data.image_path;
-        $scope.projects = data.projects;
-      }).
-      error(function (data, status, headers, config) {
-        console.log('error');
-      });
+      console.log(data);
+      $scope.imagePath = data.image_path;
+      $scope.projects = data.projects;
+    }).
+    error(function (data, status, headers, config) {
+      console.log('error');
+    });
 
-  });
+
+    $scope.openProject = function (projectUrlName) {
+      $location.path('/projects/' + projectUrlName);
+      // $scope.$apply();
+    }
+
+  }]);

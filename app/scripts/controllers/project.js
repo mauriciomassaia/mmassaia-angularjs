@@ -9,8 +9,12 @@
  */
 angular.module('mmassaiaAngularJsApp')
   .controller('ProjectCtrl', function ($scope, $routeParams, projectService) {
-    
+
     var projectId = $routeParams.projectId;
+
+    $scope.$parent.pageTitle = 'Projects';
+    $scope.previousProject = '';
+    $scope.nextProject= '';
 
     projectService.success(function (data, status, headers, config) {
         console.log(data)
@@ -19,9 +23,21 @@ angular.module('mmassaiaAngularJsApp')
 
         var projects = data.projects;
         var selectedProject;
+        var len = projects.length;
 
-        for (var i = 0; i < projects.length; i++) {
+        $scope.selectedIndex = 0;
+
+        for (var i = 0; i < len; i++) {
           if (projects[i].name_url == projectId) {
+
+            if (i > 0) {
+              $scope.previousProject = projects[i - 1];
+            }
+
+            if (i < len - 2) {
+              $scope.nextProject = projects[i + 1];
+            }
+
             selectedProject = projects[i];
             break;
           }

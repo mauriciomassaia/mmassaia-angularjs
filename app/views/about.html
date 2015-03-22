@@ -1,145 +1,87 @@
-<p class="lead">I was born in São Paulo in 1985 and since 2010 a I am living in Sydney with my girlfriend (pseudo wife) <a href="http://louisecosta.com" target="_blank">Louise</a> and our two cats, <a href="http://www.flickr.com/photos/_mauricio/9978086783/in/set-72157633021935363" target="_blank">Shadow</a> and <a href="http://www.flickr.com/photos/_mauricio/11579648665/" target="_blank">Oliver</a>.</p>
+<p>I was born in São Paulo in 1985 and since 2010 a I am living in Sydney with my wife <a href="http://louisecosta.com" target="_blank">Louise</a> and our two cats, <a href="http://www.flickr.com/photos/_mauricio/9978086783/in/set-72157633021935363" target="_blank">Shadow</a> and <a href="http://www.flickr.com/photos/_mauricio/11579648665/" target="_blank">Oliver</a>.</p>
 
-<div class="row images">
-  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-    <a href="http://louisecosta.com" target="_blank"><img src="images/louise.jpg" alt="Louise" class="img-responsive"></a>
-  </div>
-  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-    <a href="http://www.flickr.com/photos/_mauricio/9978086783/in/set-72157633021935363" target="_blank"><img src="images/shadow.jpg" alt="Shadow" class="img-responsive"></a>
-  </div>
-  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-    <a href="http://www.flickr.com/photos/_mauricio/11579648665/" target="_blank"><img src="images/oliver.jpg" alt="Oliver" class="img-responsive"></a>
-  </div>
+<md-grid-list
+      md-cols-sm="1" md-cols-gt-md="3"
+      md-row-height-gt-md="4:3" md-row-height="4:3"
+      md-gutter="5px" md-gutter-gt-sm="10px" >
+
+  <md-grid-tile md-rowspan="1" md-colspan="1">
+    <a href="http://louisecosta.com" target="_blank"><img ng-src="images/louise.jpg" alt="Louise" class="list-image"></a>
+  </md-grid-tile>
+
+  <md-grid-tile md-rowspan="1" md-colspan="1">
+    <a href="http://www.flickr.com/photos/_mauricio/9978086783/in/set-72157633021935363" target="_blank"><img ng-src="images/shadow.jpg" alt="Shadow" class="list-image"></a>
+  </md-grid-tile>
+
+  <md-grid-tile md-rowspan="1" md-colspan="1">
+    <a href="http://www.flickr.com/photos/_mauricio/11579648665/" target="_blank"><img ng-src="images/oliver.jpg" alt="Oliver" class="list-image"></a>
+  </md-grid-tile>
+
+</md-grid-list>
+
+
+<md-toolbar class="md-theme-light md-hue-1">
+  <h1 class="md-toolbar-tools">
+    <span>Education</span>
+  </h1>
+</md-toolbar>
+
+
+<md-item>
+  <md-item-content>
+    <div class="md-tile-content" layout="row" layout-sm="column">
+      <div flex><h3>2002 - 2006</h3></div>
+      <div flex>Bachelor, Computer Science</h3></div>
+      <div flex><h3>Universidade Anhembi Morumbi</h3></div>
+    </div>
+  </md-item-content>
+  <md-divider></md-divider>
+</md-item>
+
+<md-toolbar class="md-theme-light md-hue-1">
+  <h1 class="md-toolbar-tools">
+    <span>Experience</span>
+  </h1>
+</md-toolbar>
+
+<md-item ng-repeat="exp in experiences">
+  <md-item-content>
+    <div class="md-tile-content" layout="row" layout-sm="column">
+      <div flex><h3>{{exp.date}}</h3></div>
+      <div flex><h3 ng-bind-html="exp.company"></h3></div>
+      <div flex><h3>{{exp.role}}</h3></div>
+    </div>
+  </md-item-content>
+  <md-divider></md-divider>
+</md-item>
+
+<md-toolbar class="md-theme-light md-hue-1">
+  <h1 class="md-toolbar-tools">
+    <span>Life Honor and Awards</span>
+  </h1>
+</md-toolbar>
+<md-item ng-repeat="award in awards">
+  <md-item-content>
+    <div class="md-tile-content" layout="row" layout-sm="column">
+      <div flex><h3>{{award.date}}</h3></div>
+      <div flex><h3>{{award.type}}</h3></div>
+      <div flex><h3>{{award.description}}</h3></div>
+    </div>
+  </md-item-content>
+  <md-divider></md-divider>
+</md-item>
+
+<md-toolbar class="md-theme-light md-hue-1">
+  <h1 class="md-toolbar-tools">
+    <span>Want to connect?</span>
+  </h1>
+</md-toolbar>
+
+<div class="about-connect" layout="row" layout-padding layout-margin layout-align="center center">
+  <md-button class="md-primary md-hue-1" ng-repeat="s in social" aria-label="{{s.label}}">
+    <a href="{{s.link}}" target="_blank"><i class="fa {{s.icon}} fa-2x"></i></a>
+    <md-tooltip>{{s.label}}</md-tooltip>
+  </md-button>
 </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <td class="lead">Education</td>
-    </tr>
-  </thead>
-  <tr>
-    <td>2002 - 2006</td>
-    <td>Bachelor, Computer Science</td>
-  </tr>
-</table>
-
-<table class="table">
-  <thead>
-    <tr>
-      <td colspan="3" class="lead">Experience</td>
-    </tr>
-  </thead>
-  <tr>
-    <td>April 14 - present</td>
-    <td><a href="http://www.grumpysailor.com/" target="_blank">Grumpy Sailor</a> - Sydney, Australia</td>
-    <td>Web Developer</td>
-  </tr>
-  <tr>
-    <td>Mar 11 - Feb 14</td>
-    <td><a href="http://tribalworldwide.com/contact/?officeId=50" target="_blank">Tribal DDB</a> - Sydney, Australia</td>
-    <td>Flash / Web Developer</td>
-  </tr>
-  <tr>
-    <td>Oct 09 - Feb 11</td>
-    <td><a href="http://www.dm9ddb.com.br/" target="_blank">DM9DDB</a> - São Paulo, Brazil</td>
-    <td>Flash / Web Developer</td>
-  </tr>
-  <tr>
-    <td>Sep 07 - Sep 09</td>
-    <td>hello, Interactive - São Paulo, Brazil</td>
-    <td>Flash Developer</td>
-  </tr>
-  <tr>
-    <td>Jul 04 - Aug 07</td>
-    <td><a href="http://www.dm9ddb.com.br/" target="_blank">DM9DDB</a> - São Paulo, Brazil</td>
-    <td>Flash / Web Developer</td>
-  </tr>
-  <tr>
-    <td>Fev 03 - Jun 04</td>
-    <td>Grey Interactive - São Paulo, Brazil</td>
-    <td>Flash / Web Developer</td>
-  </tr>
-</table>
-
-<table class="table">
-  <thead>
-    <tr>
-      <td class="lead" colspan="3">Life Honor and Awards</td>
-    </tr>
-  </thead>
-  <tr>
-    <td>Dec 2013</td>
-    <td>Gold</td>
-    <td>NYE Fireworks at Sydney Harbour Bridge</td>
-  </tr>
-  <tr>
-    <td>Nov 2013</td>
-    <td>Gran Prix</td>
-    <td>Road Trip from Sydney to Gold Coast</td>
-  </tr>
-  <tr>
-    <td>Aug 2013</td>
-    <td>Grand Prix</td>
-    <td>Adopted Shadow</td>
-  </tr>
-  <tr>
-    <td>Apr 2013</td>
-    <td>Grand Prix</td>
-    <td>Adopted Oliver</td>
-  </tr>
-  <tr>
-    <td>Jan 2013</td>
-    <td>Gold</td>
-    <td>Trip to Cairns and Uluru</td>
-  </tr>
-  <tr>
-    <td>Dec 2012</td>
-    <td>Grand Prix</td>
-    <td>Fiji Trip with Louise</td>
-  </tr>
-  <tr>
-    <td>Mar 2011</td>
-    <td>Epic Grand Prix</td>
-    <td>Moved to Australia with Louise</td>
-  </tr>
-  <tr>
-    <td>Mar 2010</td>
-    <td>Epic Grand Prix</td>
-    <td>Started dating Louise</td>
-  </tr>
-  <tr>
-    <td>Mar 2009</td>
-    <td>Gold</td>
-    <td>Europe Trip with my sister</td>
-  </tr>
-</table>
-
-<table class="table">
-  <thead>
-    <tr>
-      <td class="lead">Want to connect?</td>
-    </tr>
-  </thead>
-  <tr>
-    <td>email / hangout: mauriciomassaia@gmail.com</td>
-  </tr>
-  <tr>
-    <td><a href="http://www.flickr.com/_mauricio" target="_blank">Flickr</a></td>
-  </tr>
-  <tr>
-    <td><a href="http://au.linkedin.com/in/mauriciomassaia/" target="_blank">Linkedin</a></td>
-  </tr>
-  <tr>
-    <td><a href="https://twitter.com/mauriciomassaia/" target="_blank">Twitter</a></td>
-  </tr>
-  <tr>
-    <td><a href="https://delicious.com/mauriciomassaia" target="_blank">Delicious</a></td>
-  </tr>
-</table>
-
-<p>
-  Webapp built with <a href="http://yeoman.io/" target="_blank">yeoman.io</a>, <a href="http://coffeescript.org/" target="_blank">coffeescript</a>, <a href="http://backbonejs.org/" target="_blank">backbonejs</a>, <a href="http://sass-lang.com/" target="_blank">sass</a> and love.
-</p>
-
-
+<md-divider></md-divider>

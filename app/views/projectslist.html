@@ -1,7 +1,14 @@
-<h2>Projects</h2>
-<ul class="projects">
-  <li ng-repeat="project in projects | filter:query | orderBy:date" class="thumbnail">
-    <a href="#/projects/{{project.name_url}}" class="thumb"><img ng-src="{{imagePath}}{{project.thumb}}"></a>
-    <a href="#/projects/{{project.name_url}}" class="title">{{project.name}}</a>
-  </li>
-<ul>
+<md-grid-list
+      md-cols-sm="1" md-cols-md="2" md-cols-lg="4" md-cols-gt-lg="6"
+      md-row-height-gt-md="1:1" md-row-height="1:1"
+      md-gutter="5px" md-gutter-gt-sm="10px" >
+  <md-grid-tile
+      ng-repeat="project in projects"
+      md-rowspan="1" md-colspan="1" ng-click="openProject('{{project.name_url}}')" class="project-item">
+      <img ng-src="{{imagePath}}{{project.thumb}}" class="list-image">
+
+    <md-grid-tile-footer>
+      <h3>{{project.name}}</h3>
+    </md-grid-tile-footer>
+  </md-grid-tile>
+</md-grid-list>

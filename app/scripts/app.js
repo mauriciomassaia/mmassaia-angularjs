@@ -15,9 +15,15 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngMaterial'
   ])
-  .config(function ($routeProvider) {
+  .config(['$routeProvider', '$mdThemingProvider', function ($routeProvider, $mdThemingProvider) {
+
+    $mdThemingProvider.theme('default')
+      .primaryPalette('orange')
+      .accentPalette('light-blue');
+
     $routeProvider
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -34,4 +40,4 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }]);
