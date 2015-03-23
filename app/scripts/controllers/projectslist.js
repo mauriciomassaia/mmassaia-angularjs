@@ -15,7 +15,6 @@ angular.module('mmassaiaAngularJsApp')
     $scope.$parent.pageTitle = 'Projects';
 
     projectService.success(function (data, status, headers, config) {
-      console.log(data);
       $scope.imagePath = data.image_path;
       $scope.projects = data.projects;
     }).
@@ -23,10 +22,7 @@ angular.module('mmassaiaAngularJsApp')
       console.log('error');
     });
 
-
     $scope.openProject = function (projectUrlName) {
       $location.path('/projects/' + projectUrlName);
-      // $scope.$apply();
-    }
-
+    };
   }]);

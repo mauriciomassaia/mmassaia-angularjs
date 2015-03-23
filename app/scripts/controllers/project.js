@@ -17,14 +17,12 @@ angular.module('mmassaiaAngularJsApp')
     $scope.nextProject= '';
 
     projectService.success(function (data, status, headers, config) {
-        console.log(data)
-        $scope.imagePath = data.image_path;
-        // $scope.projects = data.projects;
-
+        
         var projects = data.projects;
         var selectedProject;
         var len = projects.length;
 
+        $scope.imagePath = data.image_path;
         $scope.selectedIndex = 0;
 
         for (var i = 0; i < len; i++) {
