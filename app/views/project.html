@@ -1,8 +1,13 @@
-<md-toolbar class="md-accent md-tall md-hue-3">
+<md-toolbar class="md-accent md-tall">
   <span flex></span>
-  <h1 class="md-toolbar-tools md-toolbar-tools-bottom">
-    <span  class="md-flex">{{project.name}}</span>
-  </h1>
+  <div class="md-toolbar-tools md-toolbar-tools-bottom" layout-sm="column" layout="row" layout-align="space-between center">
+    <div>
+      <span>{{project.name}}</span>
+    </div>
+    <div>
+      <md-button class="md-accent md-hue-3" ng-href="#/?tag={{tag.name}}" ng-repeat="tag in project.tags">#{{tag.full_name}}</md-button>
+    </div>
+  </div>
 </md-toolbar>
 <md-content>
 
@@ -13,28 +18,20 @@
       </md-item-content>
     </md-item>
   </md-list>
-  <p>
-  Date: <small>{{project.date}}</small>
-
-  </p>
-  <!-- <h2>{{project.name}}</h2> -->
-  <p></p>
-  <p>
-    <span ng-repeat="tag in project.tags">
-      {{tag.full_name}}
-    </span>
-  </p>
+  <p>Date: <small>{{project.date}}</small></p>
+  
   <p ng-bind-html="descHTML"></p>
-
-
-  <p>
-    <md-divider></md-divider>
-  </p>
+  <p><md-divider></md-divider></p>
 
   <div layout="row" layout-align="space-between center" layout-padding layout-margin>
     <div>
       <md-button ng-href="#/projects/{{previousProject.name_url}}" ng-if="previousProject != ''" class="md-primary md-hue-1">
         &lt; {{previousProject.name}}
+      </md-button>
+    </div>
+    <div>
+      <md-button ng-href="#/" class="md-primary md-hue-3">
+        back to Projects
       </md-button>
     </div>
     <div>

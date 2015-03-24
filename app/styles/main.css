@@ -1,8 +1,9 @@
-/* Space out content a bit */
-body {
-  /*padding-top: 20px;
-  padding-bottom: 20px;*/
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
 }
+
+body {}
 
 .list-image, .project-image {
   width: 100%;
@@ -11,9 +12,49 @@ body {
   max-width: 1280px;
 }
 
+
 .project-item {
   cursor: pointer;
 }
+
+.project-item.ng-enter-stagger,
+.project-item.ng-leave-stagger,
+.project-item.ng-move-stagger {
+  -webkit-transition-delay:0.1s;
+  transition-delay:0.1s;
+}
+
+.project-item.ng-enter,
+.project-item.ng-leave,
+.project-item.ng-move {
+  -webkit-transition: 0.2s ease-in-out all;
+  transition: 0.2s ease-in-out all;
+}
+
+.project-item.ng-leave.ng-leave-active,
+.project-item.ng-enter,
+.project-item.ng-move {
+  -webkit-transition:0.2s ease-out all;
+  transition:0.2s ease-out all;
+  opacity:0;
+  -webkit-perspective-origin: 0% 0%;
+  perspective-origin: 0% 0%;
+  transform: rotate3d(1, 1, -0.1, 90deg)perspective(50);
+  -webkit-transform: rotate3d(1, 1, -0.1, 90deg) perspective(50);
+}
+
+.project-item.ng-leave,
+.project-item.ng-move.ng-move-active,
+.project-item.ng-enter.ng-enter-active {
+  opacity:1;
+  transform: rotate3d(0, 1, 0, 0deg);
+  -webkit-transform: rotate3d(1, 1, 1, 0deg) perspective(50);
+}
+
+
+
+
+
 .menuBtn {
   background-color: transparent;
   border: none;
@@ -21,14 +62,14 @@ body {
   margin: 16px 0 0 16px;
   width: 36px;
 }
+
 md-toolbar h1 {
   font-weight: normal;
 }
-md-list .md-button {
-  color: inherit;
-  font-weight: 500;
-  text-align: left;
-  width: 100%;
+
+md-select {
+  margin-top: 0;
+  margin-bottom: 16px;
 }
 
 /* Using Data-URI converted from svg until <md-icon> becomes available
@@ -38,11 +79,11 @@ https://github.com/google/material-design-icons
   background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0IDI0IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGcgaWQ9IkhlYWRlciI+CiAgICA8Zz4KICAgICAgICA8cmVjdCB4PSItNjE4IiB5PSItMjIzMiIgZmlsbD0ibm9uZSIgd2lkdGg9IjE0MDAiIGhlaWdodD0iMzYwMCIvPgogICAgPC9nPgo8L2c+CjxnIGlkPSJMYWJlbCI+CjwvZz4KPGcgaWQ9Ikljb24iPgogICAgPGc+CiAgICAgICAgPHJlY3QgZmlsbD0ibm9uZSIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CiAgICAgICAgPHBhdGggZD0iTTMsMThoMTh2LTJIM1YxOHogTTMsMTNoMTh2LTJIM1YxM3ogTTMsNnYyaDE4VjZIM3oiIHN0eWxlPSJmaWxsOiNmM2YzZjM7Ii8+CiAgICA8L2c+CjwvZz4KPGcgaWQ9IkdyaWQiIGRpc3BsYXk9Im5vbmUiPgogICAgPGcgZGlzcGxheT0iaW5saW5lIj4KICAgIDwvZz4KPC9nPgo8L3N2Zz4=) no-repeat  center center;
 }
 
-
 .about-connect .md-button {
   display: block;
   margin: 0.5em;
-  line-height: 25px; }
+  line-height: 25px;
+}
 
 .about-connect .md-button a i,
 .about-connect .md-button a:visited i,

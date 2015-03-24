@@ -8,21 +8,37 @@
  * Controller of the mmassaiaAngularJsApp
  */
 angular.module('mmassaiaAngularJsApp')
-  .controller('ProjectsListCtrl', ['$scope', 'projectService', '$location', function ($scope, projectService, $location) {
+  .controller('ProjectsListCtrl', [
+    '$scope',
+    'ProjectService',
+    '$location',
+    '$routeParams',
+    function ($scope, ProjectService, $location, $routeParams) {
 
-    $scope.projects = [];
-    $scope.imagePath = '';
-    $scope.$parent.pageTitle = 'Projects';
+      $scope.$parent.pageTitle = 'Projects';
+      $scope.projects = ProjectService.projects;
+      $scope.imagePath = ProjectService.imagePath;
+      $scope.tags = ProjectService.tags;
+      $scope.selectedTag = $routeParams.tag;
 
-    projectService.success(function (data, status, headers, config) {
-      $scope.imagePath = data.image_path;
-      $scope.projects = data.projects;
-    }).
-    error(function (data, status, headers, config) {
-      console.log('error');
-    });
+      var selectedTagWatch = $scope.$watch('selectedTag', function (newValue, oldValue) {
+      
+        if (newValue !== undefined && newValue !== '') {
+          $location.search('tag', newValue);
+          $scope.projects = ProjectService.getProjectsByTag(newValue)
+        } else if (newValue === undefined) {
+          $location.search('tag', null);
+          $scope.projects = ProjectService.projects;
+          $scope.selectedTag = undefined;
+        }
+      });
 
-    $scope.openProject = function (projectUrlName) {
-      $location.path('/projects/' + projectUrlName);
-    };
-  }]);
+      $scope.openProject = function (projectUrlName) {
+        $location.path('/projects/' + projectUrlName);
+      };
+
+      $scope.$on('$destroy', function () {
+        // unwatch!!!
+        selectedTagWatch();
+      });
+    }]);
